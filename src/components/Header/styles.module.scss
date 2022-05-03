@@ -1,0 +1,33 @@
+.header {
+  padding: 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 3rem;
+}
+
+.menu {
+  display: flex;
+
+  li {
+    padding: .5rem;
+
+    & + li {
+      margin-left: 1rem;
+    }
+  }
+}
+
+.control {
+  display: flex;
+
+  button {
+
+    & + button {
+      margin-left: 1rem;
+    }
+  }
+}

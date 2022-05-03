@@ -1,0 +1,21 @@
+// COLORS
+:root {
+}
+
+:root[data-theme='light'] {
+  --main-bg: #121212;
+  --main-font: #fff;
+}
+
+:root[data-theme='dark'] {
+  --main-bg: #121212;
+  --main-font: #fff;
+}
+
+// theme
+$color-bg: #000;
+$color-font: #fff;
+
+// Font
+$font-primary: Sans-serif;
+$font-secondary: Sans-serif;
