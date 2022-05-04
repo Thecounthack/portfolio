@@ -1,13 +1,15 @@
 import React from 'react';
 
+import { Container } from '_components/Container';
+
 import styles from './styles.module.scss';
 
-interface IFooter {
-
-}
+interface IFooter {}
 
 export const Footer: React.FC<IFooter> = () => {
     return (
-        <div className={styles.footer}>Это футер</div>
+        <Container>
+            <div className={styles.footer}>Это футер</div>
+        </Container>
     );
 };

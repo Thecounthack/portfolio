@@ -1,33 +1,75 @@
+@import '_styles/variables';
+@import '_styles/mixins';
+
 .header {
-  padding: 2rem 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 0;
 }
 
 .logo {
-  font-size: 3rem;
+    font-size: 3rem;
 }
 
 .menu {
-  display: flex;
+    display: flex;
+    padding: 0.3rem;
+    border-radius: 1.3rem;
+    background-color: #111212;
 
-  li {
-    padding: .5rem;
+    li {
+        padding: 0.5rem 1rem;
+        border-radius: 1rem;
+        font: normal 600 1.4rem/140% $font-primary;
+        color: var(--main-font);
+        @include transit(background-color);
 
-    & + li {
-      margin-left: 1rem;
+        span {
+            opacity: 0.8;
+            font: inherit;
+            color: inherit;
+            @include transit(opacity);
+        }
+
+        &:hover {
+            background-color: var(--main-bg);
+
+            span {
+                opacity: 1;
+            }
+        }
+
+        & + li {
+            margin-left: 1rem;
+        }
     }
-  }
 }
 
 .control {
-  display: flex;
+    display: flex;
 
-  button {
+    button {
+        padding: 0.5rem 1.5rem;
+        border: none;
+        border-radius: 1.3rem;
+        background-color: #111212;
 
-    & + button {
-      margin-left: 1rem;
+        span {
+            opacity: 0.8;
+            font: normal 600 1.4rem/140% $font-primary;
+            color: var(--main-font);
+            @include transit(opacity);
+        }
+
+        &:hover {
+            span {
+                opacity: 1;
+            }
+        }
+
+        & + button {
+            margin-left: 1rem;
+        }
     }
-  }
 }

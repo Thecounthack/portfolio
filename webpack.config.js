@@ -51,9 +51,9 @@ module.exports = {
         extensions: ['.tsx', '.ts', '.js'],
         alias: {
             _components: path.resolve(__dirname, 'src/components/'),
+            _assets: path.resolve(__dirname, 'src/assets/'),
             _redux: path.resolve(__dirname, 'src/redux/'),
             _styles: path.resolve(__dirname, 'src/styles/'),
-            _assets: path.resolve(__dirname, 'src/assets/'),
             _utils: path.resolve(__dirname, 'src/utils/'),
             _configs: path.resolve(__dirname, 'src/configs/'),
         },

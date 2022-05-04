@@ -7,7 +7,6 @@ import { Header } from '_components/Header';
 import { Home } from '_components/Home';
 import { Footer } from '_components/Footer';
 
-import styles from './styles.module.scss';
 import '_styles/main.scss';
 
 export const App = () => {
@@ -17,7 +16,6 @@ export const App = () => {
                 <Container>
                     <Header />
                     <Home />
-                    <div className={styles.app}>Appp djksfn</div>
                 </Container>
                 <Footer />
             </ThemeProvider>

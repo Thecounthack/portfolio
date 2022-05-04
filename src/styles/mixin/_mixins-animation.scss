@@ -1,0 +1,3 @@
+@mixin transit($property, $time: 0.2s) {
+    transition: $property $time ease;
+}
