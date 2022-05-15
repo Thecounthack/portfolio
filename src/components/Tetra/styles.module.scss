@@ -1,0 +1,149 @@
+/*\
+ *  Template-1  -2017/01/14
+ *  @mixin flexbox
+ *  @mixin center
+ *  .show-c .show
+ *  .full-v .full-vw .full-vh
+ *  .full   .full-w  .full-h
+ *  %pseudo
+\*/
+//--------------------------------------------------
+
+//-----------
+// Unit
+$unit: 25vmin;
+
+// 3D
+$rX-s: 19s;
+$rY-s: 13s;
+$rZ-s: 17s;
+$cameraX: center;
+$cameraY: center;
+$cameraZ: 7 * $unit;
+
+.camera {
+    transform-style: preserve-3d;
+    perspective-origin: $cameraX $cameraY;
+    perspective: $cameraZ;
+}
+@keyframes rotate-X {
+    from {
+        transform: rotateX(0deg);
+    }
+    to {
+        transform: rotateX(360deg);
+    }
+}
+@keyframes rotate-Y {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
+@keyframes rotate-Z {
+    from {
+        transform: rotateZ(0deg);
+    }
+    to {
+        transform: rotateZ(360deg);
+    }
+}
+.rX {
+    transform-style: preserve-3d;
+    @if $rX-s >= 0 {
+        animation: rotate-X $rX-s linear infinite both;
+    } @else {
+        animation: rotate-X -1 * $rX-s linear infinite reverse both;
+    }
+}
+.rY {
+    transform-style: preserve-3d;
+    @if $rY-s >= 0 {
+        animation: rotate-Y $rY-s linear infinite both;
+    } @else {
+        animation: rotate-Y -1 * $rY-s linear infinite reverse both;
+    }
+}
+.rZ {
+    transform-style: preserve-3d;
+    @if $rZ-s >= 0 {
+        animation: rotate-Z $rZ-s linear infinite both;
+    } @else {
+        animation: rotate-Z -1 * $rZ-s linear infinite reverse both;
+    }
+}
+
+//-----------
+
+$sqrt_2: 1.41421356237;
+$sqrt_3: 1.73205080757;
+$angle_3-3: 70.5288deg; // arccos(1 / 3)
+$triangleColor: (#f44336, #d32f2f, #ff5722, #e64a19);
+
+.Tetrahedron {
+    position: relative;
+    width: $unit * 2;
+    height: $unit * $sqrt_3 * 2;
+
+    will-change: transform;
+    transform-style: preserve-3d;
+}
+
+.triangle {
+    position: absolute;
+
+    &::before,
+    &::after {
+        //@extend %pseudo;
+        width: $unit * 2;
+        height: $unit * $sqrt_3;
+        border-style: solid;
+    }
+    &::before {
+        border-color: transparent transparent currentColor;
+        border-width: 0 $unit ($unit * $sqrt_3);
+    }
+    &::after {
+        border-color: currentColor transparent transparent;
+        border-width: ($unit * $sqrt_3) $unit 0;
+    }
+}
+
+// transform
+.triangle {
+    will-change: transform;
+    transform-style: preserve-3d;
+
+    &::before {
+        transform-origin: bottom;
+        transform: rotateX(-90deg + $angle_3-3 / 2);
+    }
+    &::after {
+        transform-origin: top;
+        transform: rotateX(90deg - $angle_3-3 / 2);
+    }
+
+    &.-right {
+        transform: rotateZ(90deg) translateZ($unit * $sqrt_2) rotateY(180deg);
+    }
+}
+
+// color
+.triangle.-left {
+    &::before {
+        color: nth($triangleColor, 1);
+    }
+    &::after {
+        color: nth($triangleColor, 2);
+    }
+}
+.triangle.-right {
+    &::before {
+        color: nth($triangleColor, 3);
+    }
+    &::after {
+        color: nth($triangleColor, 4);
+    }
+}
